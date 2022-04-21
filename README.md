@@ -1,5 +1,7 @@
 # Quasar App (qua-vite)
 
+quasar入门教程视频源码
+https://www.bilibili.com/video/BV1pA4y197Zc
 A Quasar Project
 
 ## Install the dependencies
