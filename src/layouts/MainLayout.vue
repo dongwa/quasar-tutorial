@@ -15,7 +15,7 @@
           Title
         </q-toolbar-title>
 
-        <q-btn dense flat round icon="menu" @click="toggleRightDrawer" />
+        <q-btn dense flat round icon="menu" @click="$s.toogleLeftDraw" />
       </q-toolbar>
 
       <q-tabs align="left">
@@ -57,12 +57,9 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
 import EssentialLink from '../components/EssentialLink.vue';
 import { useLayoutStore } from '../stores/layout';
 const $s = useLayoutStore();
-const leftDrawerOpen = ref(false);
-let show = ref(true);
 
 const linksList = [
   {
