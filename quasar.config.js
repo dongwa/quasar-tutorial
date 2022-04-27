@@ -45,7 +45,6 @@ module.exports = configure(function (/* ctx */) {
       'bootstrap-icons',
       'roboto-font', // optional, you are not bound to it
       'material-icons', // optional, you are not bound to it
-      'bootstrap-icons',
     ],
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#build
