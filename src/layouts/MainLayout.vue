@@ -87,10 +87,10 @@ const linksList = [
     link: 'option',
   },
   {
-    title: 'Twitter',
+    title: 'icon',
     caption: '@quasarframework',
     icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev',
+    link: 'icon',
   },
   {
     title: 'Facebook',

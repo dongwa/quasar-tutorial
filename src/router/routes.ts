@@ -9,6 +9,7 @@ const routes: RouteRecordRaw[] = [
       { path: 'counter', component: () => import('pages/SetupCounter.vue') },
       { path: 'style', component: () => import('pages/StyleIdent.vue') },
       { path: 'option', component: () => import('pages/OptionCom.vue') },
+      { path: 'icon', component: () => import('pages/IconCom.vue') },
     ],
   },
 
