@@ -10,6 +10,7 @@ const routes: RouteRecordRaw[] = [
       { path: 'style', component: () => import('pages/StyleIdent.vue') },
       { path: 'option', component: () => import('pages/OptionCom.vue') },
       { path: 'icon', component: () => import('pages/IconCom.vue') },
+      { path: 'coms', component: () => import('pages/QuaComs.vue') },
     ],
   },
 

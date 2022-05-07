@@ -93,10 +93,10 @@ const linksList = [
     link: 'icon',
   },
   {
-    title: 'Facebook',
+    title: 'coms',
     caption: '@QuasarFramework',
     icon: 'public',
-    link: 'https://facebook.quasar.dev',
+    link: 'coms',
   },
   {
     title: 'Quasar Awesome',
