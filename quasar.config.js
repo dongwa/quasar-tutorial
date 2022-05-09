@@ -49,6 +49,9 @@ module.exports = configure(function (/* ctx */) {
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#build
     build: {
+      env: {
+        API: 'sss',
+      },
       target: {
         browser: ['es2019', 'edge88', 'firefox78', 'chrome87', 'safari13.1'],
         node: 'node16',
@@ -70,9 +73,9 @@ module.exports = configure(function (/* ctx */) {
       // polyfillModulePreload: true,
       // distDir
 
-      // extendViteConf (viteConf) {
-
-      // },
+      extendViteConf(viteConf) {
+        viteConf.envPrefix = '_';
+      },
       // viteVuePluginOptions: {},
 
       vitePlugins: [
