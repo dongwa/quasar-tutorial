@@ -74,7 +74,7 @@ module.exports = configure(function (/* ctx */) {
       // distDir
 
       extendViteConf(viteConf) {
-        viteConf.envPrefix = '_';
+        // viteConf.envPrefix = '_';
       },
       // viteVuePluginOptions: {},
 
