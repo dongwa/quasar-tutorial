@@ -1,41 +1,24 @@
 <template>
-  <q-item clickable tag="a" :to="link">
-    <q-item-section v-if="icon" avatar>
-      <q-icon :name="icon" />
-    </q-item-section>
+  <q-list>
+    <q-item
+      clickable
+      tag="a"
+      v-for="(menu, index) in menus"
+      :key="index"
+      :to="menu.path"
+    >
+      <q-item-section v-if="menu.icon" avatar>
+        <q-icon :name="menu.icon" />
+      </q-item-section>
 
-    <q-item-section>
-      <q-item-label>{{ title }}</q-item-label>
-      <q-item-label caption>{{ caption }}</q-item-label>
-    </q-item-section>
-  </q-item>
+      <q-item-section>
+        <q-item-label>{{ menu.title }}</q-item-label>
+      </q-item-section>
+    </q-item></q-list
+  >
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-  name: 'EssentialLink',
-  props: {
-    title: {
-      type: String,
-      required: true,
-    },
-
-    caption: {
-      type: String,
-      default: '',
-    },
-
-    link: {
-      type: String,
-      default: '#',
-    },
-
-    icon: {
-      type: String,
-      default: '',
-    },
-  },
-});
+<script lang="ts" setup>
+import { generateRoutesOrMenus, Menus } from '../router/routes';
+const menus = generateRoutesOrMenus('menus') as Menus[];
 </script>

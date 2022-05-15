@@ -1,17 +1,33 @@
 import { RouteRecordRaw } from 'vue-router';
+
+export interface Menus {
+  path: string;
+  title: string;
+  icon: string;
+}
+
+export function generateRoutesOrMenus(type: 'routes' | 'menus') {
+  const modules = import.meta.glob('../pages/*.vue');
+  return Object.keys(modules).map((key) => {
+    const fileNameWithExt = key.split('/').pop() as string;
+    const fileName = fileNameWithExt.substring(0, fileNameWithExt.length - 4);
+    return type === 'routes'
+      ? ({
+          path: fileName,
+          component: modules[key],
+        } as RouteRecordRaw)
+      : ({
+          path: fileName,
+          title: fileName,
+          icon: 'school',
+        } as Menus);
+  });
+}
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
-    children: [
-      { path: '', component: () => import('pages/StyleIdent.vue') },
-      { path: 'flex', component: () => import('pages/FlexBox.vue') },
-      { path: 'counter', component: () => import('pages/SetupCounter.vue') },
-      { path: 'style', component: () => import('pages/StyleIdent.vue') },
-      { path: 'option', component: () => import('pages/OptionCom.vue') },
-      { path: 'icon', component: () => import('pages/IconCom.vue') },
-      { path: 'coms', component: () => import('pages/QuaComs.vue') },
-    ],
+    children: generateRoutesOrMenus('routes') as RouteRecordRaw[],
   },
 
   // Always leave this as last one,

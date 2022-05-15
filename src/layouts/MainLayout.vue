@@ -32,11 +32,7 @@
       behavior="desktop"
       bordered
     >
-      <EssentialLink
-        v-for="link in linksList"
-        :key="link.title"
-        v-bind="link"
-      />
+      <EssentialLink />
     </q-drawer>
 
     <q-page-container>
@@ -60,49 +56,4 @@
 import EssentialLink from '../components/EssentialLink.vue';
 import { useLayoutStore } from '../stores/layout';
 const $s = useLayoutStore();
-
-const linksList = [
-  {
-    title: 'Flex',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'flex',
-  },
-  {
-    title: 'Style',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'style',
-  },
-  {
-    title: 'Counter',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'counter',
-  },
-  {
-    title: 'Option',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'option',
-  },
-  {
-    title: 'icon',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'icon',
-  },
-  {
-    title: 'coms',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'coms',
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev',
-  },
-];
 </script>
