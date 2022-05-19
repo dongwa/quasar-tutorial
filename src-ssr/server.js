@@ -11,7 +11,6 @@
  */
 import express from 'express';
 import compression from 'compression';
-import serverless from 'serverless-http';
 /**
  * Create your webserver and return its instance.
  * If needed, prepare your webserver to receive
@@ -56,7 +55,7 @@ export async function listen({ app, port, isReady, ssrHandler }) {
     // waits for all the middlewares to run before serving clients
 
     // whatever you return here is equivalent to module.exports.<key> = <value>
-    return { handler: serverless(ssrHandler) };
+    return { app };
   }
 }
 

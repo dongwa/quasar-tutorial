@@ -4,10 +4,6 @@
     {
       "src": "package.json",
       "use": "vercel-quasar"
-    },
-    {
-      "src": "dist/ssr/index.js",
-      "use": "@vercel/node"
     }
   ]
 }
