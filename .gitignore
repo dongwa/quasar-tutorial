@@ -31,3 +31,11 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
+.vercel
+
+node_modules_dev
+node_modules_prod
+.quasar_cache
+.quasar_dist_cache
+
+

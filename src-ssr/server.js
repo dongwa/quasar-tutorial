@@ -56,7 +56,7 @@ export async function listen({ app, port, isReady, ssrHandler }) {
 
     // whatever you return here is equivalent to module.exports.<key> = <value>
     await isReady();
-    return app;
+    return { handler: ssrHandler };
   }
 }
 
