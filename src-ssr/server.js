@@ -55,7 +55,8 @@ export async function listen({ app, port, isReady, ssrHandler }) {
     // waits for all the middlewares to run before serving clients
 
     // whatever you return here is equivalent to module.exports.<key> = <value>
-    return { app };
+    await isReady();
+    return app;
   }
 }
 
