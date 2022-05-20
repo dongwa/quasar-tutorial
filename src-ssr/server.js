@@ -41,10 +41,10 @@ export function create(/* { ... } */) {
  * For production, you can instead export your
  * handler for serverless use or whatever else fits your needs.
  */
-export function listen({ app, port, isReady, ssrHandler }) {
+export async function listen({ app, port, isReady, ssrHandler }) {
   if (process.env.DEV) {
-    isReady();
-    return app.listen(port, () => {
+    await isReady();
+    return await app.listen(port, () => {
       if (process.env.PROD) {
         console.log('Server listening at port ' + port);
       }
