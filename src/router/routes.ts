@@ -5,29 +5,33 @@ export interface Menus {
   title: string;
   icon: string;
 }
-
-export function generateRoutesOrMenus(type: 'routes' | 'menus') {
+type RoutesOrMenus<T> = T extends 'routes' ? RouteRecordRaw[] : Menus[];
+export function generateRoutesOrMenus<T extends 'routes' | 'menus'>(
+  type: T
+): RoutesOrMenus<T> {
   const modules = import.meta.glob('../pages/*.vue');
   return Object.keys(modules).map((key) => {
     const fileNameWithExt = key.split('/').pop() as string;
     const fileName = fileNameWithExt.substring(0, fileNameWithExt.length - 4);
-    return type === 'routes'
-      ? ({
-          path: fileName,
-          component: modules[key],
-        } as RouteRecordRaw)
-      : ({
-          path: fileName,
-          title: fileName,
-          icon: 'school',
-        } as Menus);
+    return (
+      type === 'routes'
+        ? {
+            path: fileName,
+            component: modules[key],
+          }
+        : {
+            path: fileName,
+            title: fileName,
+            icon: 'school',
+          }
+    ) as any;
   });
 }
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
-    children: generateRoutesOrMenus('routes') as RouteRecordRaw[],
+    children: generateRoutesOrMenus('routes'),
   },
 
   // Always leave this as last one,

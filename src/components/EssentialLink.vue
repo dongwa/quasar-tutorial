@@ -19,6 +19,6 @@
 </template>
 
 <script lang="ts" setup>
-import { generateRoutesOrMenus, Menus } from '../router/routes';
-const menus = generateRoutesOrMenus('menus') as Menus[];
+import { generateRoutesOrMenus } from '../router/routes';
+const menus = generateRoutesOrMenus('menus');
 </script>
