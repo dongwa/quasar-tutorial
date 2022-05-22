@@ -3,10 +3,7 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "vercel-quasar",
-      "config": {
-        "memory": 1024000
-      }
+      "use": "vercel-quasar"
     }
   ]
 }
