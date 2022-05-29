@@ -23,6 +23,7 @@ export function generateRoutesOrMenus<T extends 'routes' | 'menus'>(type: T) {
         }) as unknown as RoutesOrMenus<T>;
   });
 }
+
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
@@ -39,3 +40,54 @@ const routes: RouteRecordRaw[] = [
 ];
 
 export default routes;
+
+interface IPersion<T> {
+  alias?: string[];
+  age: number;
+  name: string;
+  a: T;
+  hello?: (msg: string) => string;
+}
+
+// let a: IPersion = {
+//   age: 12,
+//   name: 'zs',
+//   hello(msg) {
+//     return this.name + msg;
+//   },
+// };
+
+// interface IP extends IPersion {
+
+// }
+
+// let b:IP={
+
+// }
+
+// type P = IPersion & {
+//   title:string
+// }
+
+// let d:P = {
+
+// }
+// T  number | string
+// function func<T>(
+//   options: IPersion<T>
+// ): T extends number ? '一键三连' : '点赞关注' {
+//   return options.a;
+// }
+
+// func({
+//   name: 'zs',
+//   age: 11,
+//   a: 777,
+// });
+
+// func()
+
+// function test(arg:string | number){
+// /...
+// (<string>arg).substring()
+// }
