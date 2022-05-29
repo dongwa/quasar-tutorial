@@ -32,7 +32,9 @@
       behavior="desktop"
       bordered
     >
-      <EssentialLink />
+      <q-scroll-area class="fit">
+        <MenusDrawer :menus="menus" />
+      </q-scroll-area>
     </q-drawer>
 
     <q-page-container>
@@ -53,7 +55,9 @@
 </template>
 
 <script setup>
-import EssentialLink from '../components/EssentialLink.vue';
 import { useLayoutStore } from '../stores/layout';
+import MenusDrawer from '../components/MenusDrawer.vue';
+import { generateMenus } from '../router/routes';
 const $s = useLayoutStore();
+const menus = generateMenus();
 </script>

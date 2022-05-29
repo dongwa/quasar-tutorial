@@ -1,34 +1,80 @@
 import { RouteRecordRaw } from 'vue-router';
 
-export interface Menus {
+export function generateRoutes() {
+  const modules = import.meta.glob('../pages/**/*.vue');
+  const INGORED = ['ErrorNotFound.vue'];
+  return Object.keys(modules)
+    .filter((item) => !INGORED.includes(item.split('/').pop() as string))
+    .map((key) => {
+      const fileNameWithExt = key.split('/').pop() as string;
+      const fileName = fileNameWithExt.substring(0, fileNameWithExt.length - 4);
+
+      const path = key
+        .replace('../pages', '')
+        .replace('.vue', '')
+        .toLocaleLowerCase();
+      return {
+        path,
+        title: fileName,
+        component: modules[key],
+      };
+    });
+}
+export interface Menu {
   path: string;
   title: string;
   icon: string;
-}
-type RoutesOrMenus<T> = T extends 'routes' ? RouteRecordRaw : Menus;
-export function generateRoutesOrMenus<T extends 'routes' | 'menus'>(type: T) {
-  const modules = import.meta.glob('../pages/*.vue');
-  return Object.keys(modules).map((key) => {
-    const fileNameWithExt = key.split('/').pop() as string;
-    const fileName = fileNameWithExt.substring(0, fileNameWithExt.length - 4);
-    return (type === 'routes'
-      ? {
-          path: fileName,
-          component: modules[key],
-        }
-      : {
-          path: fileName,
-          title: fileName,
-          icon: 'school',
-        }) as unknown as RoutesOrMenus<T>;
-  });
+  children?: Menu[];
 }
 
+export function generateMenus() {
+  const routes = generateRoutes();
+  console.log(routes);
+  let menus: Menu[] = [];
+  for (const { path, title } of routes) {
+    const pathArr = path.split('/');
+    pathArr.shift();
+    if (pathArr.length === 1) {
+      menus.push({
+        path,
+        title,
+        icon: 'school',
+      });
+    } else {
+      let parentNode = menus;
+      pathArr.forEach((key, index) => {
+        let isExist = parentNode.find((item) => item.path === '/' + key);
+        if (isExist) {
+          parentNode = isExist.children as Menu[];
+        } else {
+          const node =
+            index === pathArr.length - 1
+              ? {
+                  path,
+                  title: title,
+                  icon: 'school',
+                }
+              : {
+                  path: '/' + key,
+                  title: key,
+                  children: [],
+                  icon: 'school',
+                };
+          parentNode.push(node);
+          parentNode = node.children as Menu[];
+        }
+      });
+    }
+  }
+  return menus;
+}
+const menus = generateMenus();
+console.log('menus', menus);
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
-    children: generateRoutesOrMenus('routes'),
+    children: generateRoutes(),
   },
 
   // Always leave this as last one,
