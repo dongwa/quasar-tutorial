@@ -76,7 +76,11 @@ module.exports = configure(function (/* ctx */) {
       extendViteConf(viteConf) {
         // viteConf.envPrefix = '_';
       },
-      // viteVuePluginOptions: {},
+
+      /** 开启响应式语法糖 */
+      viteVuePluginOptions: {
+        reactivityTransform: true
+      },
 
       vitePlugins: [
         [
