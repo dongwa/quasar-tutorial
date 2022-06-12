@@ -29,7 +29,7 @@ export interface Menu {
 
 export function generateMenus() {
   const routes = generateRoutes();
-  console.log(routes);
+  // console.log(routes);
   let menus: Menu[] = [];
   for (const { path, title } of routes) {
     const pathArr = path.split('/');
@@ -69,7 +69,7 @@ export function generateMenus() {
   return menus;
 }
 const menus = generateMenus();
-console.log('menus', menus);
+// console.log('menus', menus);
 const routes: RouteRecordRaw[] = [
   {
     path: '/',

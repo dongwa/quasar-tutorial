@@ -5,14 +5,14 @@
     <div class="empty"></div>
   </q-scroll-area>
 </template>
-<script setup>
+<script setup lang="ts">
 const options = {
   handler: onIntersection,
   cfg: {
     threshold: [0, 0.25, 0.5, 1],
   },
 };
-function onIntersection(e) {
+function onIntersection(e: IntersectionObserverEntry) {
   console.log(e);
 }
 </script>

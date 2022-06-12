@@ -12,7 +12,7 @@ const $q = useQuasar();
 // This includes support for all "icon" props
 // of Quasar components
 // console.log(process.env);
-console.log(import.meta.env);
+// console.log(import.meta.env);
 $q.iconMapFn = (iconName) => {
   // iconName is the content of QIcon "name" prop
 
