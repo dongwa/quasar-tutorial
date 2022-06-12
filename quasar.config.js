@@ -100,7 +100,11 @@ module.exports = configure(function (/* ctx */) {
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#framework
     framework: {
-      config: {},
+      config: {
+        ripple: {
+          color: 'yellow',
+        },
+      },
       cssAddon: true,
       iconSet: 'material-icons', // Quasar icon set
       lang: 'zh-CN', // Quasar language pack
