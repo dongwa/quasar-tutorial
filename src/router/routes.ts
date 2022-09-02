@@ -1,7 +1,7 @@
 import { RouteRecordRaw } from 'vue-router';
 
 export function generateRoutes() {
-  const modules = import.meta.glob('../pages/**/*.vue');
+  const modules = import.meta.glob('../pages/**/*');
   const INGORED = ['ErrorNotFound.vue'];
   return Object.keys(modules)
     .filter((item) => !INGORED.includes(item.split('/').pop() as string))
@@ -11,7 +11,7 @@ export function generateRoutes() {
 
       const path = key
         .replace('../pages', '')
-        .replace('.vue', '')
+        .replace(/\.vue|tsx/, '')
         .toLocaleLowerCase();
       return {
         path,

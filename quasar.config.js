@@ -79,10 +79,11 @@ module.exports = configure(function (/* ctx */) {
 
       /** 开启响应式语法糖 */
       viteVuePluginOptions: {
-        reactivityTransform: true
+        reactivityTransform: true,
       },
 
       vitePlugins: [
+        ['@vitejs/plugin-vue-jsx', {}], // @vitejs/plugin-vue-jsx@1.3.10
         [
           '@intlify/vite-plugin-vue-i18n',
           {
