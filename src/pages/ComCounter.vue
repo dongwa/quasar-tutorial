@@ -1,5 +1,5 @@
 <template>
-  <h1>{{ count }}</h1>
+  <h1 class="">{{ count }}</h1>
   <div class="color">{{ dCount }}</div>
   <button @click="add">add</button>
 </template>

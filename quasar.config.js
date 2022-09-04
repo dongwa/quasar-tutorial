@@ -28,7 +28,7 @@ module.exports = configure(function (/* ctx */) {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli-vite/boot-files
-    boot: ['i18n', 'axios'],
+    boot: ['i18n', 'axios', 'unocss'],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#css
     css: ['app.scss'],
@@ -83,6 +83,15 @@ module.exports = configure(function (/* ctx */) {
       },
 
       vitePlugins: [
+        [
+          'unocss/vite',
+          {
+            presets: [
+              require('unocss').presetUno(),
+              require('unocss').presetAttributify(),
+            ],
+          },
+        ],
         ['@vitejs/plugin-vue-jsx', {}], // @vitejs/plugin-vue-jsx@1.3.10
         [
           '@intlify/vite-plugin-vue-i18n',
