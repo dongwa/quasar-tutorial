@@ -11,7 +11,7 @@ export function generateRoutes() {
 
       const path = key
         .replace('../pages', '')
-        .replace(/\.vue|tsx/, '')
+        .replace(/\.vue|\.tsx/, '')
         .toLocaleLowerCase();
       return {
         path,
