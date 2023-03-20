@@ -64,17 +64,18 @@ module.exports = configure(function (/* ctx */) {
 
       // rebuildCache: true, // rebuilds Vite/linter/etc cache on startup
 
-      // publicPath: '/',
+      publicPath: '/vite',
       // analyze: true,
       // env: {},
       // rawDefine: {}
       // ignorePublicFolder: true,
       // minify: false,
       // polyfillModulePreload: true,
-      // distDir
+      distDir:'dist/quasar-vite',
 
       extendViteConf(viteConf) {
         // viteConf.envPrefix = '_';
+        // viteConf.base = './'
       },
 
       /** 开启响应式语法糖 */
