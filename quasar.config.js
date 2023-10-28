@@ -122,7 +122,7 @@ module.exports = configure(function (/* ctx */) {
       // components: ['QBanner', 'QAjaxBar'],
       // directives: [''],
       // Quasar plugins
-      plugins: [],
+      plugins: ['Cookies'],
     },
 
     animations: 'all', // --- includes all animations
